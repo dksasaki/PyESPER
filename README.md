@@ -1,11 +1,11 @@
 # PyESPER
-version 1.01.01
+version 1.0.0
 
 <ins>Note:</ins>
-This is a preliminary set of instructions for use of the [PyESPER](https://github.com/LarissaMDias/PyESPER/blob/main/PyESPER.ipynb) Jupyter notebook, for which the accompanying manuscript is under review. The accompanying Python package is being created and will be released soon. This package is being developed in parallel with [pyTRACE](https://github.com/d-sandborn/pyTRACE/tree/main).
+This is a preliminary set of instructions for use of the [PyESPER](https://github.com/LarissaMDias/PyESPER/blob/main), for which the accompanying manuscript is under review. The full accompanying Python package is being created and will be released soon. This package is being developed in parallel with [pyTRACE](https://github.com/d-sandborn/pyTRACE/tree/main).
 
 ## Quick Start
-Please see the associated [Examples](https://github.com/LarissaMDias/PyESPER/blob/main/Examples.ipynb) JupyterNotebook for a quick example of use of the preliminary PyESPER.ipynb. To run this code, you will need to first make sure that you have downloaded the required associated files from the GitHub page as follows. You will also need to ensure that the installed package [requirements](https://github.com/LarissaMDias/PyESPER/blob/main/requirements.txt) are met. Please edit the downloaded Examples notebook to use the path you specify on your computer. The example uses the [GLODAPv2.2023](https://glodap.info) dataset.
+Please see the associated [Examples](https://github.com/LarissaMDias/PyESPER/blob/main/examples_glodap.ipynb) for a quick example of use of the preliminary PyESPER. To run this code, you will need to first make sure that you have downloaded the required associated files from the GitHub page as follows. You will also need to ensure that the installed package [requirements](https://github.com/LarissaMDias/PyESPER/blob/main/requirements.txt) are met. The example uses the [GLODAPv2.2023](https://glodap.info) dataset and requires the [glodap](https://github.com/BjerknesClimateDataCentre/glodap/tree/master) package be installed.
 
 Mat_fullgrid folder: 
 Folder of .mat files needed for each variable to be estimated, necessary for PyESPER_LIR or PyESPER_Mixed
@@ -89,9 +89,9 @@ These are the first version of Python implementation of ESPERv1.1, which is an a
 ## Basic Use
 
 ### Requirements
-For the present version, you will need to download the [PyESPER_Final.ipynb](https://github.com/LarissaMDias/PyESPER/blob/main/PyESPER_Final.ipynb) along with the affiliated neural network files within the [NeuralNetworks](https://github.com/LarissaMDias/PyESPER/tree/main/NeuralNetworks) folder, and the [SimpleCantEstimateLR_full.csv](https://github.com/LarissaMDias/PyESPER/blob/main/SimpleCantEstimateLR_full.csv) file for estimates involving anthropogenic carbon calculations (pH and dissolved inorganic carbon). 
+For the present version, you will need to download the repository along with the affiliated neural network files within the [NeuralNetworks](https://github.com/LarissaMDias/PyESPER/tree/main/NeuralNetworks) folder, and the [SimpleCantEstimateLR_full.csv](https://github.com/LarissaMDias/PyESPER/blob/main/SimpleCantEstimateLR_full.csv) file for estimates involving anthropogenic carbon calculations (pH and dissolved inorganic carbon). 
 
-To run the Jupyter Notebooks, you will need numpy, pandas, seawater, scipy, time, matplotlib, decimal, PyCO2SYS, importlib, statistics, and math packages.
+To run the code, you will need numpy, pandas, seawater, scipy, time, matplotlib, decimal, PyCO2SYS, importlib, statistics, and math packages.
 
 Please refer to the examples Notebooks that you can try without needing to install anything.
 
