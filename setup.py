@@ -7,5 +7,5 @@ setup(
     author="LMD",
     author_email="lmdias@uw.edu",
     packages=["PyESPER"],
-    install_requires=["numpy", "seawater", "scipy", "matplotlib", "PyCO2SYS", "importlib"],
+    install_requires=["numpy", "seawater", "scipy", "matplotlib", "PyCO2SYS"],
 )
