@@ -2,7 +2,7 @@
 version 1.0.0
 
 <ins>Note:</ins>
-This is a preliminary set of instructions for use of the [PyESPER](https://github.com/LarissaMDias/PyESPER/blob/main), for which the accompanying manuscript is under review. The full accompanying Python package is being created and will be released soon. This package is being developed in parallel with [pyTRACE](https://github.com/d-sandborn/pyTRACE/tree/main).
+This is a for use of the [PyESPER](https://github.com/LarissaMDias/PyESPER/blob/main) package. This package is being developed in parallel with [pyTRACE](https://github.com/d-sandborn/pyTRACE/tree/main).
 
 ## Quick Start
 Please see the associated [Examples](https://github.com/LarissaMDias/PyESPER/blob/main/examples_glodap.ipynb) for a quick example of use of the preliminary PyESPER. To run this code, you will need to first make sure that you have downloaded the required associated files from the GitHub page as follows. You will also need to ensure that the installed package [requirements](https://github.com/LarissaMDias/PyESPER/blob/main/requirements.txt) are met. The example uses the [GLODAPv2.2023](https://glodap.info) dataset and requires the [glodap](https://github.com/BjerknesClimateDataCentre/glodap/tree/master) package be installed.
