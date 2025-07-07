@@ -14,16 +14,15 @@ def PyESPER_Mixed(DesiredVariables, Path, OutputCoordinates={}, PredictorMeasure
     import time
 
     import numpy as np
-    import pandas as pd
 
-    from .lir import PyESPER_LIR
-    from .nn import PyESPER_NN
+    from .lir import lir
+    from .nn import nn
     
     tic = time.perf_counter()
 
     # Fetch estimates and uncertainties from PyESPER_LIR and PyESPER_NN
-    EstimatesLIR, UncertaintiesLIR, _ = PyESPER_LIR(DesiredVariables, Path, OutputCoordinates, PredictorMeasurements, **kwargs)
-    EstimatesNN, UncertaintiesNN = PyESPER_NN(DesiredVariables, Path, OutputCoordinates, PredictorMeasurements, **kwargs)
+    EstimatesLIR, UncertaintiesLIR, _ = lir(DesiredVariables, Path, OutputCoordinates, PredictorMeasurements, **kwargs)
+    EstimatesNN, UncertaintiesNN = nn(DesiredVariables, Path, OutputCoordinates, PredictorMeasurements, **kwargs)
 
     Estimates, Uncertainties = {}, {}
     for est_type in EstimatesLIR.keys():
@@ -38,4 +37,4 @@ def PyESPER_Mixed(DesiredVariables, Path, OutputCoordinates={}, PredictorMeasure
     toc = time.perf_counter()
     print(f"PyESPER_Mixed took {toc - tic:0.4f} seconds, or {(toc-tic)/60:0.4f} minutes to run")    
 
-    return pd.DataFrame(Estimates), pd.DataFrame(Uncertainties)
+    return DataFrame(Estimates), DataFrame(Uncertainties)
