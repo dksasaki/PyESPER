@@ -1,9 +1,6 @@
 numpy
-pandas
 seawater
 scipy
 matplotlib
 PyCO2SYS
-math
 importlib
-statistics
