@@ -1,0 +1,10 @@
+numpy
+seawater
+scipy
+matplotlib
+PyCO2SYS
+importlib
+statistics
+os
+pandas
+time
