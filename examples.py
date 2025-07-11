@@ -7,7 +7,7 @@ from PyESPER.mixed import mixed
  
 data = glodap.atlantic() 
 
-L = slice(0, -1)
+L = slice(250, 300)
 PredictorMeasurements = {
     k: data[k][L].values.tolist()
     for k in [
@@ -27,6 +27,9 @@ OutputCoordinates = {
         "depth",
     ]
 }
+
+# Optional Unhash the following and customize your
+# measuring uncertainties
 #MeasUncerts = {
 #    'sal_u': [0.001], 
 #    'temp_u': [0.3], 
@@ -35,8 +38,11 @@ OutputCoordinates = {
 #    'silicate_u': [0.03], 
 #    'oxygen_u': [0.025]
 #}
+
 EstDates = data.year[L].values.tolist()
-Path = "" # path works relative to the location of this script
+Path = "" 
+# Path works relative to the location of this script, 
+# customize as needed
              
 EstimatesLIR, CoefficientsLIR, UncertaintiesLIR = lir(
     ['TA'], 
@@ -47,33 +53,33 @@ EstimatesLIR, CoefficientsLIR, UncertaintiesLIR = lir(
     Equations=[1]
     )
 
-#EstimatesNN, UncertaintiesNN = nn(
-#    ['TA', 'DIC', 'pH', 'phosphate', 'nitrate', 'silicate', 'oxygen'], 
-#    Path, 
-#    OutputCoordinates, 
-#    PredictorMeasurements, 
-#    EstDates=EstDates
-#    )
+EstimatesNN, UncertaintiesNN = nn(
+    ['DIC', 'phosphate'], 
+    Path, 
+    OutputCoordinates, 
+    PredictorMeasurements, 
+    EstDates=EstDates
+    )
 
-#EstimatesMixed, UncertaintiesMixed = mixed(
-#    ['TA'], 
-#    Path,
-#    OutputCoordinates, 
-#    PredictorMeasurements,
-#    EstDates=EstDates,
-#    Equations=[15]
-#    )
+EstimatesMixed, UncertaintiesMixed = mixed(
+    ['pH'], 
+    Path,
+    OutputCoordinates, 
+    PredictorMeasurements,
+    EstDates=EstDates,
+    Equations=[15]
+    )
 
-# DEBUG
+# DEBUG, unhash as needed
 #print(EstimatesLIR['TA1']) 
-#print(CoefficientsLIR['DIC2']['Coef A'][5:10])
-#print(EstimatesNN['TA1'])
-#print(UncertaintiesNN['TA1'])
+#print(CoefficientsLIR['TA1']['Coef A'][5:10])
+#print(EstimatesNN['DIC1'])
+#print(UncertaintiesNN['phosphate1'])
 #print(UncertaintiesLIR['TA1'])
 
 # Optional format to pandas and save
-import pandas as pd
-(pd.DataFrame.from_dict(data=EstimatesLIR, orient='index')
-    .to_csv('TA1LIR.csv'))
+#import pandas as pd
+#(pd.DataFrame.from_dict(data=EstimatesLIR, orient='index')
+#    .to_csv('TA1LIR.csv'))
 #(pd.DataFrame.from_dict(data=EstimatesNN, orient='index')
-#    .to_csv('TANN.csv'))
+#    .to_csv('EstNN.csv'))
