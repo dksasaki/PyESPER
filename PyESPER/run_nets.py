@@ -58,14 +58,18 @@ def run_nets(DesiredVariables, Equations, code={}):
         for v in DesiredVariables:
             name = v + str(e)
             # Get the corresponding variables for the equation
-            variables = [locals()[var][name] for var in equation_map[e]]
+            local_vars = locals()
+            variables = [local_vars[var][name] for var in equation_map[e]]
+
             P[name] = [[[cosd, sind, lat, depth] + variables]]
             netstimateAtl, netstimateOther = [], []
             for n in range(1, 5):   
-                fOName = f"NeuralNetworks.ESPER_{v}_{e}_Other_{n}"
-                fAName = f"NeuralNetworks.ESPER_{v}_{e}_Atl_{n}"
-                moda = importlib.import_module(fAName)
-                modo = importlib.import_module(fOName)
+                # Then replace your existing import lines with:
+                # Try the old way first (for backward compatibility)
+                fOName = f".NeuralNetworks.ESPER_{v}_{e}_Other_{n}"
+                fAName = f".NeuralNetworks.ESPER_{v}_{e}_Atl_{n}"
+                moda = importlib.import_module(fAName, package='PyESPER')
+                modo = importlib.import_module(fOName, package='PyESPER')
                 from importlib import reload
                 reload(moda)
                 reload(modo)   
