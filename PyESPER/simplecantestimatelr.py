@@ -19,7 +19,7 @@ def simplecantestimatelr(EstDates, longitude, latitude, depth, fpath=None):
 
 
     # Load interpolation points and values
-    if fpath is None:
+    if fpath is not None:
         CantIntPoints = pd.read_csv(osp.join(fpath,'SimpleCantEstimateLR_full.csv'))
     else:
         CantIntPoints = pd.read_csv('SimpleCantEstimateLR_full.csv')
