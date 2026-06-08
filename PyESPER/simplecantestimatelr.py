@@ -1,4 +1,4 @@
-def simplecantestimatelr(EstDates, longitude, latitude, depth):
+def simplecantestimatelr(EstDates, longitude, latitude, depth, fpath=None):
 
     """
     Simple estimate of contribution of anthropogenic carbon to pH and DIC estimates.
@@ -15,9 +15,15 @@ def simplecantestimatelr(EstDates, longitude, latitude, depth):
     import numpy as np
     import pandas as pd
     from scipy.interpolate import griddata
+    import os.path as osp
+
 
     # Load interpolation points and values
-    CantIntPoints = pd.read_csv('SimpleCantEstimateLR_full.csv')
+    if fpath is None:
+        CantIntPoints = pd.read_csv(osp.join(fpath,'SimpleCantEstimateLR_full.csv'))
+    else:
+        CantIntPoints = pd.read_csv('SimpleCantEstimateLR_full.csv')
+
     pointsi = (
         CantIntPoints['Int_long'] * 0.25,
         CantIntPoints['Int_lat'],

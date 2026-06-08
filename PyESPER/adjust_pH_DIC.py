@@ -1,4 +1,4 @@
-def adjust_pH_DIC(DesiredVariables, VerboseTF, Dates, Est_pre={}, PredictorMeasurements={}, OutputCoordinates={}, **kwargs):
+def adjust_pH_DIC(DesiredVariables, VerboseTF, Dates, Path=None, Est_pre={}, PredictorMeasurements={}, OutputCoordinates={}, **kwargs):
 
     """
     If present, adjusting pH and DIC for anthropogenic carbon (Cant) within LIRs. Cant adjustment methods
@@ -50,7 +50,7 @@ def adjust_pH_DIC(DesiredVariables, VerboseTF, Dates, Est_pre={}, PredictorMeasu
         depth = np.array(OutputCoordinates["depth"])
     
         # Estimate anthropogenic carbon (Cant) and anthropogenic carbon for the year 2002 (Cant2002)
-        Cant, Cant2002 = simplecantestimatelr(Dates, longitude, latitude, depth)
+        Cant, Cant2002 = simplecantestimatelr(Dates, longitude, latitude, depth, fpath=Path)
         Cant, Cant2002 = np.array(Cant), np.array(Cant2002)
     
         for combo in range(0, len(combos2)):

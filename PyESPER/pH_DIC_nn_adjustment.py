@@ -1,4 +1,4 @@
-def pH_DIC_nn_adjustment(Path, DesiredVariables, Estimates, YouHaveBeenWarnedCanth, OutputCoordinates={}, PredictorMeasurements={}, **kwargs):
+def pH_DIC_nn_adjustment(DesiredVariables, Estimates, YouHaveBeenWarnedCanth, Path=None, OutputCoordinates={}, PredictorMeasurements={}, **kwargs):
 
     """
     Calculating the anthropogenic carbon component for DIC and pH, if needed
@@ -36,7 +36,9 @@ def pH_DIC_nn_adjustment(Path, DesiredVariables, Estimates, YouHaveBeenWarnedCan
     if "EstDates" in kwargs:
         d = np.array(kwargs["EstDates"])
         EstDates = (
-            [item for sublist in [kwargs["EstDates"]] * (n + 1) for item in sublist]
+            # [item for sublist in [kwargs["EstDates"]] * (n + 1) for item in sublist]
+            # n+1 creates an array that is longer than the input variables
+            [item for sublist in [kwargs["EstDates"]] * (n) for item in sublist]
             if len(d) != n else list(d)
         )
     else:
@@ -55,7 +57,7 @@ def pH_DIC_nn_adjustment(Path, DesiredVariables, Estimates, YouHaveBeenWarnedCan
             longitude = np.mod(OutputCoordinates["longitude"], 360)
             latitude = np.array(OutputCoordinates["latitude"])
             depth = np.array(OutputCoordinates["depth"])
-            Cant, Cant2002 = simplecantestimatelr(EstDates, longitude, latitude, depth)
+            Cant, Cant2002 = simplecantestimatelr(EstDates, longitude, latitude, depth, fpath=Path)
             YouHaveBeenWarnedCanth = True
     
         for combo, a in zip(combos2, values2):
